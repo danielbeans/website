@@ -1,0 +1,5 @@
+{
+    "scripts": {
+      "build":  "mkdir dist; cp -r index.html assets/ dist"
+    }
+  }
