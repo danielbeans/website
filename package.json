@@ -16,7 +16,7 @@
     },
     "scripts": {
         "start": "react-scripts start",
-        "build": "export PUBLIC_URL=\"/dist\" && react-scripts build",
+        "build": "react-scripts build; mv build/ dist/",
         "eject": "react-scripts eject"
     },
     "eslintConfig": {
