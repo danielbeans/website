@@ -1,5 +1,5 @@
 # Site Version 2
 
-Hello, welcome to the current version of my website.
+Hello, welcome to version 2 of my website.
 
-https://danielfwilliams.com
+https://v2.danielfwilliams.com
