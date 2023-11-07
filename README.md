@@ -1,5 +1,5 @@
-# Site Version 3
+# Site Version 1
 
-Hello, welcome to the current version of my website.
+Hello, welcome to my the first version of my website.
 
-https://danielfwilliams.com
+https://danielbeans.github.io/v1/
