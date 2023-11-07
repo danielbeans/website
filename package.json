@@ -1,0 +1,7 @@
+{
+  "name": "website",
+  "packageManager": "yarn@4.0.1",
+  "scripts": {
+    "build":  "mkdir dist; cp index.html dist"
+  }
+}
