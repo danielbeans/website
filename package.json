@@ -1,5 +1,6 @@
 {
     "scripts": {
       "build":  "mkdir dist; cp -r index.html assets/ dist"
-    }
-  }
+    },
+    "packageManager": "yarn@1.22.18"
+}
