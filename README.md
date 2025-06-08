@@ -4,6 +4,8 @@ Hello, welcome to the current version of my website.
 
 [danielfwilliams.com](https://danielfwilliams.com)
 
+Based on [astro-nano](https://github.com/markhorn-dev/astro-nano)
+
 ## View previous versions:
 
 ### Version 2
