@@ -2,7 +2,7 @@
 import RootLayout from "@/layouts/RootLayout.astro";
 
 import Container from "@components/Container.astro";
-import InteractiveGrid from "@components/InteractiveGrid.astro";
+import Blog from "@components/Blog.astro";
 ---
 
 <RootLayout>
@@ -11,8 +11,13 @@ import InteractiveGrid from "@components/InteractiveGrid.astro";
       Hi, I'm Daniel
     </h1>
     <p class="animate text-2xl pt-4 pl-1">
-      I'm a software engineer, creative, and entrepreneur.
+      I'm a software engineer, creative, and learner.
     </p>
-    <InteractiveGrid />
+    <!-- Divider -->
+    <span class="animate flex items-center py-8">
+      <span class="h-px flex-1 bg-gray-300 dark:bg-gray-600"></span>
+    </span>
+    <!-- Blog -->
+    <Blog />
   </Container>
 </RootLayout>

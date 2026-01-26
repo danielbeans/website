@@ -1,0 +1,46 @@
+---
+import { getCollection, render } from "astro:content";
+import RootLayout from "@/layouts/RootLayout.astro";
+import Container from "@components/Container.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: `${post.id.replace(/\.md$/, "")}` },
+    props: post,
+  }));
+}
+
+const post = Astro.props;
+const { Content } = await render(post);
+---
+
+<RootLayout>
+  <Container>
+    <a
+      href="/"
+      class="inline-flex items-center text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 mb-8"
+    >
+      &larr; Back
+    </a>
+    <article>
+      <span
+        class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide"
+      >
+        Week {post.data.week} / 52
+      </span>
+      <h1 class="text-2xl font-bold text-white mt-1">
+        {post.data.title}
+      </h1>
+      <p class="text-gray-600 dark:text-gray-400 mt-2 line-clamp-2">
+        {post.data.description}
+      </p>
+      <span class="flex items-center py-8">
+        <span class="h-px flex-1 bg-gray-300 dark:bg-gray-600"></span>
+      </span>
+      <div class="prose prose-invert max-w-none">
+        <Content />
+      </div>
+    </article>
+  </Container>
+</RootLayout>

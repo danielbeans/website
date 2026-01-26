@@ -1,10 +1,11 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 html {
     overflow-y: scroll;
     color-scheme: light;
 }
-  
+
 html.dark {
     color-scheme: dark;
 }
@@ -39,7 +40,7 @@ footer {
     @apply opacity-0 translate-y-3;
     @apply transition-all duration-700 ease-out;
 }
-  
+
 .animate.show {
     @apply opacity-100 translate-y-0;
 }
