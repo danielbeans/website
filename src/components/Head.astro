@@ -23,12 +23,22 @@ const { title } = Astro.props;
 
   function animate() {
     const animateElements = document.querySelectorAll(".animate");
+    const hasVisited = sessionStorage.getItem("hasVisited");
 
-    animateElements.forEach((element, index) => {
-      setTimeout(() => {
+    if (hasVisited) {
+      // Skip animation, show immediately
+      animateElements.forEach((element) => {
         element.classList.add("show");
-      }, index * 150);
-    });
+      });
+    } else {
+      // First visit, animate with stagger
+      sessionStorage.setItem("hasVisited", "true");
+      animateElements.forEach((element, index) => {
+        setTimeout(() => {
+          element.classList.add("show");
+        }, index * 150);
+      });
+    }
   }
 
   function onScroll() {
