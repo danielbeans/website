@@ -1,7 +1,7 @@
 ---
 title: "Hello World"
 week: 4
-description: "My new years resolution to never stop building"
+description: "My new years resolution to never stop building."
 ---
 
 I've always had this idea to do something by every sunday. "Sunday snaps" or something like that. But 2 years have gone by and I haven't done anything close to it. Thus, the couple weeks late New Years resolution was born:

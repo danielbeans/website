@@ -1,16 +1,17 @@
 ---
 title: "Setting Up *arr"
 week: 5
-description: "We love Linux ISOs"
+description: "We love Linux ISOs."
 ---
 
-This week I'll be setting up a *arr stack on my NAS. I'm getting tired of manually searching for, downloading, and copying [my Linux ISOs](https://www.urbandictionary.com/define.php?term=Linux%20ISO) to my NAS.
+This week I'll be setting up a \*arr stack on my NAS. I'm getting tired of manually searching for, downloading, and copying [my Linux ISOs](https://www.urbandictionary.com/define.php?term=Linux%20ISO) to my NAS.
 
-## What is the *arr stack?
+## What is the \*arr stack?
 
 Basically just a [suite of services](https://wiki.servarr.com) that grab and organize collections of different media.
 
 I want the following:
+
 - radarr (movies)
 - sonarr (tv & anime)
 - prowlarr (index manager)
@@ -19,8 +20,8 @@ I want the following:
 ## The Flow
 
 1. Sonarr/Radarr scans my library on disk
-    - On service setup I identify my movies and series such that when an new episode or better version comes out it will be flagged
-    - I'll add new media I want to these services
+   - On service setup I identify my movies and series such that when an new episode or better version comes out it will be flagged
+   - I'll add new media I want to these services
 2. Prowlarr gets a media request and uses indexers I add to find the media I wanted
 3. Sonarr/Radarr recieves the media settings (download link)
 4. Request is now handed off to RDT-Client to initiate download
@@ -99,17 +100,15 @@ The issue came when renaming the media file names. Originally I had them very si
 
 `One Piece - E0001 - I'm Luffy. The Man Who's Gonna Be King of the Pirates!`.
 
-What this lacks is anything to do with the quality of media, audio quality, languages, etc. I wanted to use this formula for naming: 
+What this lacks is anything to do with the quality of media, audio quality, languages, etc. I wanted to use this formula for naming:
 
-`
-{Series TitleYear} - S{season:00}E{episode:00} - {Episode CleanTitle:90} {[Custom Formats]}{[Quality Full]}{[Mediainfo AudioCodec}{ Mediainfo AudioChannels]}{MediaInfo AudioLanguages}{[MediaInfo VideoDynamicRangeType]}[{Mediainfo VideoCodec }{MediaInfo VideoBitDepth}bit]{-Release Group}
-`
+`{Series TitleYear} - S{season:00}E{episode:00} - {Episode CleanTitle:90} {[Custom Formats]}{[Quality Full]}{[Mediainfo AudioCodec}{ Mediainfo AudioChannels]}{MediaInfo AudioLanguages}{[MediaInfo VideoDynamicRangeType]}[{Mediainfo VideoCodec }{MediaInfo VideoBitDepth}bit]{-Release Group}`
 
 The One Piece episode ends up being renamed to this:
 
 `One Piece (1999) - S01E001 - Im Luffy! The Man Whos Gonna Be King of the Pirates! [WEBRip-1080p][Opus 2.0][JA+EN][x265 10bit].mkv`
 
-There is no way for Plex to map the first to the second. Because One Piece has 1100+ episodes, I don't want to do a rescan of all of the episodes and I want to perserve me and my users watch history. 
+There is no way for Plex to map the first to the second. Because One Piece has 1100+ episodes, I don't want to do a rescan of all of the episodes and I want to perserve me and my users watch history.
 
 Let's try and edit the Plex library SQLite database `com.plexapp.plugins.library.db`!
 
@@ -130,8 +129,8 @@ My Plex services had it's own `plex` user that also had an auxillery `media` gro
 
 Ooooo boy this one took me a while to get correct. So One Piece is not a seasonal anime like some others (JJK, Frerein, etc.). This is ok, because custom the [Plex Scanner](https://github.com/ZeroQI/Absolute-Series-Scanner) and [Metadata Agent](https://github.com/ZeroQI/Hama.bundle) I use [has an "override"](https://github.com/ZeroQI/Absolute-Series-Scanner/blob/master/tvdb4.mapping.xml) for Plex to match metadata correctly and use anime "Arcs" instead of seasons.
 
- But the metadata source Sonarr uses is TVDB which identifies One Piece in seasons that don't align with One Piece arcs to my liking. Thus, I needed to create a special naming format that doesn't align with the rest of my anime that excludes the season and instead using absoulte numbering. Remember the One Piece episode above? That is not actually the file name I currently use. It's instead:
+But the metadata source Sonarr uses is TVDB which identifies One Piece in seasons that don't align with One Piece arcs to my liking. Thus, I needed to create a special naming format that doesn't align with the rest of my anime that excludes the season and instead using absoulte numbering. Remember the One Piece episode above? That is not actually the file name I currently use. It's instead:
 
- `One Piece (1999) - 0001 - Im Luffy! The Man Whos Gonna Be King of the Pirates! [WEBRip-1080p][Opus 2.0][JA+EN][x265 10bit].mkv` 
+`One Piece (1999) - 0001 - Im Luffy! The Man Whos Gonna Be King of the Pirates! [WEBRip-1080p][Opus 2.0][JA+EN][x265 10bit].mkv`
 
- Where we exclude the season and in Sonarr, manually (and painfully) map the episodes to the TVDB seasonal episodes.
+Where we exclude the season and in Sonarr, manually (and painfully) map the episodes to the TVDB seasonal episodes.
