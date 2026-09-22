@@ -1,12 +1,12 @@
 # Repository Guidelines
 
-Personal portfolio and technical blog website (`https://danielfwilliams.com`). Minimal Astro-based static site generator project documenting weekly technical entries.
+Personal portfolio and technical blog website (`https://danielfwilliams.com`). Minimal Astro-based static site generator project documenting dated technical entries.
 
 ## Project Overview
 
 - **Name**: Personal Website - Version 3
 - **Type**: Static site generator (Astro SSG)
-- **Purpose**: Portfolio + technical blog with weekly entries (week 1–52 format)
+- **Purpose**: Portfolio + technical blog with dated entries (YYYY-MM-DD format)
 - **Template**: Based on astro-nano
 - **Repository**: GitHub (danielbeans/website)
 - **Previous Versions**: v2 (v2.danielfwilliams.com), v1 (v1.danielfwilliams.com)
@@ -81,7 +81,7 @@ npm run astro    # Direct Astro CLI access for advanced commands
 | Components | PascalCase (.astro) | Container, Header, Footer, Blog, Link, Head |
 | Layouts | PascalCase + 'Layout' | RootLayout |
 | Pages | kebab-case | index.astro, blog/[...slug].astro |
-| Content files | kebab-case | week-27.md, week-26.md |
+| Content files | YYYY-MM-DD.md | 2025-07-07.md, 2025-06-23.md |
 | Utilities | camelCase (.ts) | consts.ts, types.ts, content.config.ts |
 | CSS classes | kebab-case | tailwind utilities + custom (.animate, .show) |
 | Constants | SCREAMING_SNAKE_CASE | SITE (in consts.ts) |
@@ -117,17 +117,18 @@ npm run astro    # Direct Astro CLI access for advanced commands
 **Blog posts** (`content/blog/*.md`):
 ```yaml
 ---
-title: "Week 27: Consolidating Authentication"
-week: 27
+title: "Authentication Architecture for NAS Services"
+date: "2025-07-07"
 description: "Technical blog entry"
 ---
 
 ## Post content here
 ```
 
-- Schema validation via Zod: `title` (string), `week` (number), `description` (string)
+- Schema validation via Zod: `title` (string), `date` (string), `description` (string)
 - Content loaded dynamically via `getCollection('blog')`
-- Sorted by week descending (latest first)
+- Sorted by date descending (newest first)
+- File naming: `YYYY-MM-DD.md` format
 - Images referenced from `content/images/`
 
 ### Async Patterns
@@ -183,7 +184,7 @@ description: "Technical blog entry"
 |------|---------|
 | `src/consts.ts` | Site constants (SITE: name, email) |
 | `src/types.ts` | TypeScript interfaces (Site type) |
-| `src/content.config.ts` | Astro Content Collections schema (blog posts with Zod) |
+| `src/content.config.ts` | Astro Content Collections schema (blog posts with Zod; date field) |
 | `src/styles/global.css` | Global Tailwind CSS (typography plugin) |
 
 ## Runtime/Tooling Preferences
